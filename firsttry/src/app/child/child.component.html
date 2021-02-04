@@ -2,6 +2,14 @@
     <h1 class="red-title"> Список покупок </h1>
 </div>
 <div class="panel">
+    <p>{{currentDate}} </p>
+    <p [textContent]="weekDay"></p>
+    <p [class.isredbox]="isRed">Количество кликов {{count}}</p>
+    <button (click)="increase($event)">Click</button>
+    <br><input type="text" [(ngModel)]="name" />
+    <br><input type="text" [(ngModel)]="name" />
+</div>
+<div class="panel">
     <div class="form-inline">
         <div class="form-group">
             <div class="col-md-8">

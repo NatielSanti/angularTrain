@@ -1,25 +1,18 @@
 import { Component } from '@angular/core';
 
-class Item{
-    purchase: string;
-    done: boolean;
-    price: number;
-
-    constructor(purchase: string, price: number) {
-        this.purchase = purchase;
-        this.price = price;
-        this.done = false;
-    }
-}
-
 @Component({
     selector: 'purchase-app',
-    templateUrl: './app.component.html',
-    styleUrls: ['./../style.css']
+    templateUrl: './child.component.html',
+    styleUrls: ['./../../style.css']
 })
-export class AppComponent {
+export class ChildComponent {
+    currentDate: string = "04.02.2021";
+    weekDay: string = "monday";
     text: string;
     price: number = 0;
+    count: number=0;
+    name: string = "Tom";
+    isRed: boolean = true;
 
     items: Item[] =
     [
@@ -33,5 +26,10 @@ export class AppComponent {
         if(text==null || text.trim()=="" || price==null)
             return;
         this.items.push(new Item(text, price));
+    }
+    increase($event : any) : void {
+        this.count++;
+        this.isRed = !this.isRed;
+        console.log($event);
     }
 }
