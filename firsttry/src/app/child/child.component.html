@@ -1,1 +1,4 @@
-<h2>Добро пожаловать {{name}}!</h2>
+<h2>Добро пожаловать {{name}}, {{userSex}}, {{userAge}}!</h2><br>
+<button (click)="change(true)">+</button>
+<button (click)="change(false)">-</button>
+<input [ngModel]="userName" (ngModelChange)="onNameChange($event)" />

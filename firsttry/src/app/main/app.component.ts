@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {DataService} from './../service/data.service';
+import {LogService} from './../service/log.service';
 
 class Item{
     purchase: string;
@@ -15,7 +17,8 @@ class Item{
 @Component({
     selector: 'purchase-app',
     templateUrl: './app.component.html',
-    styleUrls: ['./../../style.css']
+    styleUrls: ['./../../style.css'],
+    providers: [DataService]
 })
 export class AppComponent {
     currentDate: string = "04.02.2021";
@@ -25,6 +28,9 @@ export class AppComponent {
     count: number=0;
     name: string = "Tom";
     isRed: boolean = true;
+    sex: string = "Battle helicopter";
+    age: number = 123;
+    clicks:number = 0;
 
     items: Item[] =
     [
@@ -33,15 +39,34 @@ export class AppComponent {
         { purchase: "Картофель", done: true, price: 22.6 },
         { purchase: "Сыр", done: false, price:310 }
     ];
+
+    phones: string[] = [];
+    phone: string;
+
+    constructor(private dataService: DataService){}
+
     addItem(text: string, price: number): void {
 
         if(text==null || text.trim()=="" || price==null)
             return;
         this.items.push(new Item(text, price));
     }
+
     increase($event : any) : void {
         this.count++;
         this.isRed = !this.isRed;
         console.log($event);
+    }
+
+    onChanged(increased:any){
+        increased==true?this.clicks++:this.clicks--;
+    }
+
+    addPhone(name: string){
+        this.dataService.addData(name);
+    }
+
+    ngOnInit(){
+        this.phones = this.dataService.getData();
     }
 }

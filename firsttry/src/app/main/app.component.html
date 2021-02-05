@@ -1,6 +1,7 @@
 <div class="page-header">
     <h1 class="red-title"> Список покупок </h1>
-    <child-comp></child-comp>
+    <child-comp [(userName)]="name" [userSex]="sex" [userAge]="age"  (onChanged)="onChanged($event)"></child-comp>
+    <h3>Количество очков: {{clicks}}</h3>
 </div>
 <div class="panel">
     <p>{{currentDate}} </p>
@@ -43,5 +44,16 @@
             <td><input type="checkbox" [(ngModel)]="item.done" /></td>
         </tr>
         </tbody>
+    </table>
+</div>
+
+<div class="panel">
+    <div><input [(ngModel)]="phone" placeholder = "Модель" />
+        <button (click)="addPhone(phone)">Добавить</button>
+    </div>
+    <table>
+        <tr *ngFor="let item of phones">
+            <td>{{item}}</td>
+        </tr>
     </table>
 </div>
