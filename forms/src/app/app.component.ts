@@ -8,12 +8,20 @@ export class Phone{
     { }
 }
 
+export class User{
+    name: string;
+    email: string;
+    phone: string;
+}
+
 @Component({
     selector: 'my-app',
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
+    styleUrls: ['./../style.css']
 })
 export class AppComponent {
 
+    user: User = new User();
     phone: Phone = new Phone("", 0, "");
     phones: Phone[] = [{ title: "X10", price: 120000, company: "Apple" }];
     companies: string[] = ["Apple", "Huawei", "Xiaomi", "Samsung", "LG", "Motorola", "Alcatel"];
@@ -28,5 +36,9 @@ export class AppComponent {
 
         if(this.phone.title=="нет")
             this.phone.title = "неизвестно";
+    }
+
+    addUser(){
+        console.log(this.user);
     }
 }
