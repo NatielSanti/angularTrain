@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {DataService} from './../service/data.service';
-import {LogService} from './../service/log.service';
 
 class Item{
     purchase: string;
@@ -17,8 +16,7 @@ class Item{
 @Component({
     selector: 'purchase-app',
     templateUrl: './app.component.html',
-    styleUrls: ['./../../style.css'],
-    providers: [DataService]
+    styleUrls: ['./../../style.css']
 })
 export class AppComponent {
     currentDate: string = "04.02.2021";
