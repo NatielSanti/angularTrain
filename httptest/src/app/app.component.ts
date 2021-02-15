@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { HttpService} from './http.service';
+import { NgModel} from '@angular/forms';
 import {User} from './user';
 
 @Component({
@@ -9,7 +10,9 @@ import {User} from './user';
 })
 export class AppComponent implements OnInit {
 
+    user: User = new User();
     users: User[]=[];
+    users_from_server: User[]=[];
     error:any;
 
     constructor(private httpService: HttpService){}
@@ -20,5 +23,16 @@ export class AppComponent implements OnInit {
             error => {  this.error = error.message;
                         console.log(error);}
         );
+    }
+
+    postUsers(){
+        this.httpService.postUser(this.user.firstName, this.user.lastName);
+        console.log(this.user.firstName + " " + this.user.lastName);
+    }
+
+    getUsers(){
+        this.httpService.getUserAll().subscribe((data:any) => {
+            this.users_from_server=data
+        });
     }
 }
