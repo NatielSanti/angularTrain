@@ -26,13 +26,13 @@ export class AppComponent implements OnInit {
     }
 
     postUsers(){
-        this.httpService.postUser(this.user.firstName, this.user.lastName);
-        console.log(this.user.firstName + " " + this.user.lastName);
-    }
+        this.httpService.postUser(this.user).subscribe((data: User[]) =>
+          { this.users_from_server = data },
+          error => console.log(error))}
 
     getUsers(){
         this.httpService.getUserAll().subscribe((data:any) => {
-            this.users_from_server=data
+            this.users_from_server = data
         });
     }
 }

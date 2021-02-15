@@ -23,7 +23,7 @@ export class HttpService{
     }
 
     postUser(user: User){
-        const body = {firstName: user.firstName, lastName: user.lastName};
-        return this.http.post('http://localhost:8080/api/data/add', body);
+//         const body = {firstName: user.firstName, lastName: user.lastName};
+        return this.http.post('http://localhost:8080/api/data/add', user);
     }
 }
