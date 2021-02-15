@@ -1,6 +1,8 @@
+<div>{{error}}</div>
 <ul>
     <li *ngFor="let user of users">
-        <p>Имя пользователя: {{user?.name}}</p>
-        <p>Возраст пользователя: {{user?.age}}</p>
+        <p>Номер: {{user?.id}}</p>
+        <p>Имя пользователя: {{user?.firstName}}</p>
+        <p>Возраст пользователя: {{user?.lastName}}</p>
     </li>
 </ul>

@@ -10,11 +10,15 @@ import {User} from './user';
 export class AppComponent implements OnInit {
 
     users: User[]=[];
+    error:any;
 
     constructor(private httpService: HttpService){}
 
     ngOnInit(){
-
-        this.httpService.getData().subscribe(data => this.users=data["userList"]);
+            this.httpService.getUsers().subscribe(
+            data=>this.users=data,
+            error => {  this.error = error.message;
+                        console.log(error);}
+        );
     }
 }
